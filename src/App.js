@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Container, Row } from 'react-bootstrap'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css'
+
+import ChoixDates from './components/ChoixDates'
+import LigneCartes from './components/LigneCartes'
+import Graphiques from './components/Graphiques'
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+
+    const year = new Date().getFullYear()
+    const month = new Date().getMonth()
+
+    this.state = {
+      dateDebut: new Date(year, month, 1),
+      dateFin: new Date(year, month, new Date(year, month + 1, 0).getDate())
+    }
+
+  }
+
+  handleStartDateChange = (date) => {
+    this.setState({
+      dateDebut: date
+    })
+  }
+
+  handleEndDateChange = (date) => {
+    this.setState({
+      dateFin: date
+    })
+  }
+
+  render() {
+    const { dateDebut, dateFin } = this.state 
+
+    return (
+      <Container>
+        <Row>
+          <h3 className="text-gray-800">Tableau de bord GEC'APP Demande</h3>
+        </Row>
+        <ChoixDates 
+          dateDebut={dateDebut}
+          dateFin={dateFin} 
+          handleStartDateChange={this.handleStartDateChange}
+          handleEndDateChange={this.handleEndDateChange}
+        />
+        <LigneCartes />
+        <Graphiques />
+      </Container>
+    )
+  }
 }
 
-export default App;
+export default App
