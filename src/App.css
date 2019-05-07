@@ -1,0 +1,15 @@
+body {
+  background-color: #f8f9fc;
+}
+
+.text-gray-300 {
+  color: #dddfeb!important;
+}
+
+.text-gray-800 {
+  color: #5a5c69!important;
+}
+
+.text-xs {
+  font-size: .7rem;
+}
