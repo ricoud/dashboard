@@ -20,10 +20,4 @@ describe('<App />', () => {
     const wrapper = shallow(<App />)
     expect(wrapper).to.contain(<Graphiques />)
   })
-  /*
-  it('has 36 cards', () => {
-    const wrapper = shallow(<App />)
-    expect(wrapper.find('Carte')).to.have.length(36)
-  })
-  */
 })
